@@ -45,7 +45,6 @@ const props = defineProps({
 onMounted(() => {
   //  初始化首页
   let name = route.name;
-  console.log('初始化首页');
   
   if (route.path === "/home") {
     name = "home";

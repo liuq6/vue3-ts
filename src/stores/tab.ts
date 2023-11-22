@@ -32,7 +32,6 @@ export const useTabBarStore = defineStore('tabBar', {
   actions: {
     addTabs(proxy, tab: tabInf) {
       if (!proxy) return
-      console.log('addTabs', tab)
 
       this.tabList.push(
         tab.path === '/home'
@@ -55,20 +54,58 @@ export const useTabBarStore = defineStore('tabBar', {
       if (item) return
       this.tabList.unshift(homePage)
     },
+    // 是否有正在激活的tab
+    JudgeActivePage(paths: [], router) {
+      const isHave = this.tabList.some((t) => t.path === paths.includes(t.path))
+      if (!isHave) {
+        this.setLastTab(router)
+      }
+    },
+    setLastTab(router) {
+      const path2: string = this.tabList[this.tabList.length - 1].path
+      this.currentRoute = path2
+      router.push(path2)
+    },
     closeTabs(type: string, path: string, router) {
       switch (type) {
         case 'current':
+          // eslint-disable-next-line no-case-declarations
           const index: number = this.tabList.findIndex((t) => t.path === path)
           if (index === -1) return
           this.tabList.splice(index, 1)
-          const isThisRoute = this.currentRoute === path
-            if (isThisRoute) {
-            const path2: string = this.tabList[this.tabList.length - 1].path
-            this.currentRoute = path2
-            router.push(path2)
-          } else {
-          }
-
+          this.JudgeActivePage([path], router)
+          break
+        case 'left':
+          // eslint-disable-next-line no-case-declarations
+          const index2: number = this.tabList.findIndex((t) => t.path === path)
+          const pathList: [] = this.tabList.slice(1, index2).map((t) => t.path)
+          if (index2 === -1) return
+          this.tabList = [
+            ...this.tabList.slice(0, 1),
+            ...this.tabList.slice(index2),
+          ]
+          this.JudgeActivePage(pathList, router)
+          break
+        case 'right':
+          // eslint-disable-next-line no-case-declarations
+          const index3: number = this.tabList.findIndex((t) => t.path === path)
+          const pathList2: [] = this.tabList
+            .slice(index3 + 1)
+            .map((t) => t.path)
+          if (index3 === -1) return
+          this.tabList = [...this.tabList.slice(0, index3 + 1)]
+          this.JudgeActivePage(pathList2, router)
+          break
+        case 'other':
+          // eslint-disable-next-line no-case-declarations
+          const item: tabInf = this.tabList.find((t) => t.path === path)
+          if (!item) return
+          this.tabList = [...this.tabList.slice(0, 1), item]
+          this.setLastTab(router)
+          break
+        case 'all':
+          this.tabList = [...this.tabList.slice(0, 1)]
+          this.setLastTab(router)
           break
         default:
           break

@@ -1,8 +1,8 @@
 <template>
   <div class="tab-bar cp">
-    <div :class="{'tag-tab':true,'activate-tab': store.currentR ===tab.path }" v-for="tab in store.tabLists" :key="tab.path"
+    <div :class="{'tag-tab':true,'activate-tab': store.currentR ===tab.path }" v-for="tab,index in store.tabLists" :key="tab.path"
       @click="tabClick(tab.path)">
-      <rightClickMenu>
+      <rightClickMenu :isCurrent="store.currentR ===tab.path" :index="index+1" :length="store.tabLists.length" :path="tab.path">
         {{$t(tab.title)}}
         <el-icon v-if="!tab.noClose" @click.stop="closeTabs('current',tab.path)">
           <Close />
