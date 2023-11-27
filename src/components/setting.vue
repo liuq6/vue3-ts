@@ -32,6 +32,7 @@ const drawer = ref<boolean>(false);
 .setting {
   margin-left: 10px;
   line-height: 0px;
+  font-size: 18px; 
 }
 .drawer {
   padding: 0 10px;
