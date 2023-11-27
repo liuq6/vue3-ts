@@ -4,6 +4,7 @@
       <crumbs />
     </div>
     <div class="right-c">
+      <badge />
       <switchLanguage />
       <div>
         <el-dropdown>
@@ -31,10 +32,10 @@ import { useRouter } from "vue-router";
 // 获取 store
 const store = useIndexStore();
 const router = useRouter();
-const loginOut =()=>{
-  router.push('/login')
-  removeUserToken() 
-}
+const loginOut = () => {
+  router.push("/login");
+  removeUserToken();
+};
 </script>
 
 <style lang="scss" scoped>
@@ -47,13 +48,16 @@ const loginOut =()=>{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 150px;
+    // width: 150px;
     .avatar-name {
       display: flex;
       align-items: center;
       .el-avatar {
         margin-right: 5px;
       }
+    }
+    .el-dropdown{
+      margin-left:20px;
     }
   }
 }

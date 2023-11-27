@@ -2233,12 +2233,10 @@
   "resolved" "https://registry.npmjs.org/pify/-/pify-3.0.0.tgz"
   "version" "3.0.0"
 
-"pinia-plugin-persist@^1.0.0":
-  "integrity" "sha512-M4hBBd8fz/GgNmUPaaUsC29y1M09lqbXrMAHcusVoU8xlQi1TqgkWnnhvMikZwr7Le/hVyMx8KUcumGGrR6GVw=="
-  "resolved" "https://registry.npmjs.org/pinia-plugin-persist/-/pinia-plugin-persist-1.0.0.tgz"
-  "version" "1.0.0"
-  dependencies:
-    "vue-demi" "^0.12.1"
+"pinia-plugin-persistedstate@^3.2.0":
+  "integrity" "sha512-tZbNGf2vjAQcIm7alK40sE51Qu/m9oWr+rEgNm/2AWr1huFxj72CjvpQcIQzMknDBJEkQznCLAGtJTIcLKrKdw=="
+  "resolved" "https://registry.npmjs.org/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-3.2.0.tgz"
+  "version" "3.2.0"
 
 "pinia@^2.0.0", "pinia@^2.1.6":
   "integrity" "sha512-bIU6QuE5qZviMmct5XwCesXelb5VavdOWKWaB17ggk++NUwQWWbP5YnsONTk3b752QkW9sACiR81rorpeOMSvQ=="
@@ -2830,11 +2828,6 @@
   "resolved" "https://registry.npmjs.org/vue-demi/-/vue-demi-0.14.6.tgz"
   "version" "0.14.6"
 
-"vue-demi@^0.12.1":
-  "integrity" "sha512-BREuTgTYlUr0zw0EZn3hnhC3I6gPWv+Kwh4MCih6QcAeaTlaIX0DwOVN0wHej7hSvDPecz4jygy/idsgKfW58Q=="
-  "resolved" "https://registry.npmjs.org/vue-demi/-/vue-demi-0.12.5.tgz"
-  "version" "0.12.5"
-
 "vue-eslint-parser@^9.1.1", "vue-eslint-parser@^9.3.1":
   "integrity" "sha512-Clr85iD2XFZ3lJ52/ppmUDG/spxQu6+MAeHXjjyI4I1NUYZ9xmenQp4N0oaHJhrA8OOxltCVxMRfANGa70vU0g=="
   "resolved" "https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-9.3.1.tgz"
@@ -2881,7 +2874,7 @@
     "@vue/typescript" "1.8.11"
     "semver" "^7.3.8"
 
-"vue@^2.0.0 || >=3.0.0", "vue@^2.6.14 || ^3.3.0", "vue@^2.7.0 || ^3.2.25", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.3.4", "vue@3.3.4":
+"vue@^2.6.14 || ^3.3.0", "vue@^2.7.0 || ^3.2.25", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.3.4", "vue@3.3.4":
   "integrity" "sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.3.4.tgz"
   "version" "3.3.4"

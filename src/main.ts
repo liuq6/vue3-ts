@@ -3,7 +3,8 @@ import './assets/reset.scss'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import piniaPersist from 'pinia-plugin-persist'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
 
 import ElementPlus,{ dayjs } from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -15,8 +16,15 @@ import i18n from '@/language/index.js'
 // 扩展插件
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import 'dayjs/locale/zh-cn'
+
+dayjs.extend(relativeTime)
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
+dayjs.locale('zh-cn')
+console.log(dayjs,'dayjs');
+
 import "@/utils/comm.ts";
 import App from './App.vue'
 import { initRouter } from './router'
@@ -29,7 +37,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
 const pinia = createPinia()
-pinia.use(piniaPersist)
+pinia.use(piniaPluginPersistedstate)
 initRouter(app)
 app.use(pinia).use(ElementPlus,{locale:zhCN}).use(components).use(i18n).mount('#app')
 

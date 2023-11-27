@@ -1,7 +1,7 @@
 <template>
   <el-dropdown>
     <span class="el-dropdown-link">
-      <span class="iconfont icon-zhongyingwenqiehuan-zhongwen"></span>
+      <Icon icon="icon-zhongyingwenqiehuan-zhongwen"/>
     </span>
     <template #dropdown>
       <el-dropdown-menu>

@@ -115,7 +115,5 @@ export const useTabBarStore = defineStore('tabBar', {
       this.currentRoute = path
     },
   },
-  persist: {
-    enabled: true, // 开启数据缓存 +++++++
-  },
+  persist: true,
 })

@@ -5,6 +5,7 @@ import {
 } from 'vue-router'
 import { type App } from 'vue'
 import HomeView from '@/views/home/index.vue'
+// import HomeView from '@/views/home/index.vue'
 import { getUserToken } from '@/utils/user'
 import { useIndexStore } from '@/stores/index'
 import nprogress from 'nprogress'
@@ -30,7 +31,7 @@ const routes: RouteRecordRaw[] = [
     component: () => HomeView,
     children:[
       {
-        path: '',
+        path: '/',
         name:'',
         component: () => import('@/views/index/index.vue'),
         meta: {
@@ -58,6 +59,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
           isShow: true,
           title: 'menus.indexButtonName',
+          keepAlive: true
         },
       },
       {
@@ -67,18 +69,9 @@ const routes: RouteRecordRaw[] = [
         meta: {
           isShow: true,
           title: 'menus.indexanimationName',
+          keepAlive: true
         },
       },
-      // {
-      //   path: 'allocMenu',
-      //   name: 'allocMenu',
-      //   component: () => import('@/views/ums/allocMenu.vue'),
-      // },
-      // {
-      //   path: 'allocResource',
-      //   name: 'allocResource',
-      //   component: () => import('@/views/ums/allocResource.vue'),
-      // },
     ],
   },
   {

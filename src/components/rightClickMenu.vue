@@ -103,6 +103,7 @@ const menuClick = (type: string) => {
     default:
       break;
   }
+  visible.value = false
 };
 </script>
 

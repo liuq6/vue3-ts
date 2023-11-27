@@ -13,5 +13,9 @@ export interface userInfoRes {
     roles: []
 }
 
+export interface userMsgRes {
+    list: [],
+}
+
 
 

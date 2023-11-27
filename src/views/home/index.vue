@@ -10,14 +10,15 @@
         </el-header>
         <tabBar />
         <el-main>
-          <!-- <router-view></router-view> -->
-          <transition name="fade-transform" mode="out-in">
-            <router-view v-slot="{ Component }">
-              <keep-alive nclude="button,animation">
+          <router-view v-slot="{ Component,route  }">
+            <transition name="fade-transform" mode="out-in">
+            
+              <keep-alive v-if="route.meta.keepAlive">
                 <component :is="Component" />
               </keep-alive>
-            </router-view>
-          </transition>
+              <component v-else :is="Component" />
+            </transition>
+          </router-view>
         </el-main>
       </el-container>
     </el-container>

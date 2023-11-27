@@ -12,6 +12,6 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": ["node"],
-    "types": ["unplugin-vue-define-options/macros-global", "pinia-plugin-persist"]
+    "types": ["unplugin-vue-define-options/macros-global", "pinia-plugin-persistedstate"]
   }
 }

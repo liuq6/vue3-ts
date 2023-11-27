@@ -2,7 +2,7 @@
   <div>
     <template v-for="item in props.list">
       <template v-if="item.children && item.children.length > 0">
-        <el-sub-menu :key="item.path" :index="item.path" :popper-append-to-body="false">
+        <el-sub-menu :key="item.path" :index="item.path" :teleported="false">
           <template #title>
             <el-icon class="svg-wh" v-if="item?.icon">
               <component v-if="item.icon" :is="item.icon"></component>
@@ -13,7 +13,7 @@
         </el-sub-menu>
       </template>
       <template v-else>
-        <el-menu-item :key="item.path" :index="item.path" :popper-append-to-body="false" @click.native="select(item.name)">
+        <el-menu-item :key="item.path" :index="item.path" :teleported="false" @click.native="select(item.name)">
           <el-icon class="svg-wh" v-if="item?.icon">
             <component v-if="item.icon" :is="item.icon"></component>
           </el-icon>

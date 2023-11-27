@@ -8,6 +8,6 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["unplugin-vue-define-options/macros-global","pinia-plugin-persist"]
+    "types": ["unplugin-vue-define-options/macros-global","pinia-plugin-persistedstate"]
   }
 }

@@ -71,7 +71,5 @@ export const useIndexStore = defineStore('Index', {
       this.isCollapse = !this.isCollapse
     },
   },
-  persist: {
-    enabled: true, // 开启数据缓存 +++++++
-  },
+  persist: true,
 })
