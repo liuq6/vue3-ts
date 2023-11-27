@@ -91,4 +91,13 @@
     }
   }
 }
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// .el-divider--horizontal{
+//   margin: 10px 0!important
+// }
 @import './theme.scss';

@@ -17,14 +17,12 @@ import i18n from '@/language/index.js'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import 'dayjs/locale/zh-cn'
+import zh from 'dayjs/locale/zh-cn'
 
 dayjs.extend(relativeTime)
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
-dayjs.locale('zh-cn')
-console.log(dayjs,'dayjs');
-
+dayjs.locale(zh)
 import "@/utils/comm.ts";
 import App from './App.vue'
 import { initRouter } from './router'

@@ -19,6 +19,7 @@
           </template>
         </el-dropdown>
       </div>
+      <setting/>
     </div>
 
   </div>

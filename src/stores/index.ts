@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useDark,useToggle } from '@vueuse/core'
 import { getAdminInfo } from '@/request/login'
 // const { locale: i18nLanguage } = useI18n()
 
@@ -20,38 +21,34 @@ interface meusKeyObj {
   title?: string
   name?: string
 }
+const initIsDark = localStorage.getItem('useDarkKEY') === 'dark'
 export const useIndexStore = defineStore('Index', {
   state: () => {
+    console.log(useDark(), 'sdjksdd')
+
     return {
       menus: [],
       localLanguage: 'zh',
       userInfo: {},
       isCollapse: false,
+      // 主题模式
+      isDark: useDark()                                                                                     ,
     }
   },
   getters: {
-    newMenus(state) {
-      const newMenus: meusObj = {}
-      state.menus.forEach((menu: menusitf) => {
-        if (menu.parentId === 0) {
-          //一级菜单
-          newMenus[menu.id] = {
-            ...menu,
-            children: newMenus[menu.id]?.children || [],
-          }
-        } else {
-          //二级菜单
-          newMenus[menu.parentId] = newMenus[menu.parentId] || {}
-          newMenus[menu.parentId].children =
-            newMenus[menu.parentId]?.children || []
-          newMenus[menu.parentId].children.push(menu)
-        }
-      })
-      return newMenus
-    },
     isCollapseIng: (state) => state.isCollapse,
   },
   actions: {
+    theme() {
+      return useDark({
+        // 存储到localStorage/sessionStorage中的Key 根据自己的需求更改
+        storageKey: 'useDarkKEY',
+        // // 暗黑class名字
+        // valueDark: 'dark',
+        // // 高亮class名字
+        // valueLight: 'light',
+      })
+    },
     updateMenus(menus: []) {
       this.menus = menus
     },
@@ -69,6 +66,18 @@ export const useIndexStore = defineStore('Index', {
     },
     switchIsCollapse() {
       this.isCollapse = !this.isCollapse
+    },
+    updateIsDark() {
+      useToggle(
+        useDark({
+          // 存储到localStorage/sessionStorage中的Key 根据自己的需求更改
+          storageKey: 'useDarkKEY',
+          // // 暗黑class名字
+          // valueDark: 'dark',
+          // // 高亮class名字
+          // valueLight: 'light',
+        })
+      )
     },
   },
   persist: true,
