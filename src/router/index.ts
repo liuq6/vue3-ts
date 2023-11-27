@@ -4,8 +4,8 @@ import {
   type RouteRecordRaw,
 } from 'vue-router'
 import { type App } from 'vue'
-import HomeView from '@/views/home/index.vue'
 // import HomeView from '@/views/home/index.vue'
+const HomeView = () => import('@/views/home/index.vue')
 import { getUserToken } from '@/utils/user'
 import { useIndexStore } from '@/stores/index'
 import nprogress from 'nprogress'
@@ -28,7 +28,7 @@ const routes: RouteRecordRaw[] = [
       title: 'menus.homeName',
       icon: 'HomeFilled',
     },
-    component: () => HomeView,
+    component:HomeView,
     children:[
       {
         path: '/',
@@ -49,7 +49,7 @@ const routes: RouteRecordRaw[] = [
       title: 'menus.indexName',
       icon: 'MostlyCloudy',
     },
-    component: () => HomeView,
+    component:HomeView,
     redirect: '/index/button',
     children: [
       {
@@ -82,7 +82,7 @@ const routes: RouteRecordRaw[] = [
       title: 'menus.featrueName',
       icon: 'Brush',
     },
-    component: () => HomeView,
+    component:HomeView,
     redirect: '/index/button',
     children: [
       {
@@ -157,7 +157,7 @@ router.beforeEach((to, from, next) => {
   //         path: `/${obj.name}`,
   //         name: obj.name,
   //         redirect: `/${obj.name}/${obj.children[0].name}`,
-  //         component: () => HomeView,
+  //         component:HomeView,
   //         children: obj.children.reduce((res, item) => {
   //           res.push({
   //             path: item.name || '',
@@ -172,7 +172,7 @@ router.beforeEach((to, from, next) => {
   //     router.addRoute({
   //       path: '/index',
   //       name: 'index',
-  //       component: () => HomeView,
+  //       component:HomeView,
   //     })
   //     next(to)
   //   })
