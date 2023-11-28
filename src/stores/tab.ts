@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia'
+import type { Router } from 'vue-router'
+import type { ComponentInternalInstance } from 'vue'
 
 interface tabInf {
   path: string
@@ -30,9 +32,8 @@ export const useTabBarStore = defineStore('tabBar', {
     currentR: (state) => state.currentRoute,
   },
   actions: {
-    addTabs(proxy, tab: tabInf) {
+    addTabs(proxy: ComponentInternalInstance, tab: tabInf) {
       if (!proxy) return
-
       this.tabList.push(
         tab.path === '/home'
           ? homePage
@@ -55,18 +56,18 @@ export const useTabBarStore = defineStore('tabBar', {
       this.tabList.unshift(homePage)
     },
     // 是否有正在激活的tab
-    JudgeActivePage(paths: [], router) {
+    JudgeActivePage(paths: string[], router: Router) {
       const isHave = this.tabList.some((t) => t.path === paths.includes(t.path))
       if (!isHave) {
         this.setLastTab(router)
       }
     },
-    setLastTab(router) {
+    setLastTab(router: Router) {
       const path2: string = this.tabList[this.tabList.length - 1].path
       this.currentRoute = path2
       router.push(path2)
     },
-    closeTabs(type: string, path: string, router) {
+    closeTabs(type: string, path: string, router: Router) {
       switch (type) {
         case 'current':
           // eslint-disable-next-line no-case-declarations

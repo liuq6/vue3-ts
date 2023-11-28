@@ -16,6 +16,14 @@
           <switchTopic />
         </div>
         <div class="drawer-nav">
+          <el-divider> <span class="title">导航栏模式</span> </el-divider>
+         <div class="imgs">
+          <img src="@/assets/img/layout/left.png" alt="">
+          <img src="@/assets/img/layout/center.png" alt="">
+          <img src="@/assets/img/layout/right.png" alt="">
+         </div>
+        </div>
+        <div class="drawer-nav">
           <el-divider> <span class="title">主题色</span> </el-divider>
           <ul class="cp">
             <li v-for="val,key in store.colorList" :style="{ background: val.themeColor }" :key="val.themeColor"
@@ -80,6 +88,14 @@ const store = useColorThemeStore();
         position: absolute;
         left: 0px;
         top: 2px;
+      }
+    }
+    .imgs{
+      display: flex;
+      img{
+        // width: 50px;
+        // height: 50px;
+        margin-right: 10px;
       }
     }
   }

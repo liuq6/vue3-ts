@@ -115,7 +115,7 @@ export const useColorThemeStore = defineStore('colorTheme', {
     },
     ArraySetColor(doms, colorObj) {
       if (!doms || !doms.length) return
-      console.log(doms, 'doms')
+      // console.log(doms, 'doms')
 
       Array.from(doms).forEach((dom) => {
         dom.style.setProperty('--el-menu-text-color', colorObj.menuText) //菜单文字颜色
