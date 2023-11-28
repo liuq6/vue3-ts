@@ -3,7 +3,7 @@
     <el-icon @click="drawer = true">
       <Setting style="width:30px; height:30px" />
     </el-icon>
-    <el-drawer v-model="drawer" title="" :with-header="false" size="400px">
+    <el-drawer v-model="drawer" title="" :with-header="false" size="300px">
       <div class="drawer">
         <div class="drawer-top">
           <span>项目配置</span>
@@ -13,7 +13,18 @@
         </div>
         <div class="drawer-nav">
           <el-divider> <span class="title">主题</span> </el-divider>
-          <switchTopic/>
+          <switchTopic />
+        </div>
+        <div class="drawer-nav">
+          <el-divider> <span class="title">主题色</span> </el-divider>
+          <ul class="cp">
+            <li v-for="val,key in store.colorList" :style="{ background: val.themeColor }" :key="val.themeColor"
+            @click="store.changeDefaultTheme(key)">
+              <el-icon v-show="key===store.defaultTheme" :style="{color:key==='light'?'#000':'#FFFFFF'}">
+                <Check />
+              </el-icon>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -23,16 +34,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
+import { reactive, ref } from "vue";
+import { useColorThemeStore } from "@/stores/colotTheme";
 const drawer = ref<boolean>(false);
+const store = useColorThemeStore();
 </script>
 
 <style scoped lang="scss">
 .setting {
   margin-left: 10px;
   line-height: 0px;
-  font-size: 18px; 
+  font-size: 18px;
 }
 .drawer {
   padding: 0 10px;
@@ -44,15 +56,32 @@ const drawer = ref<boolean>(false);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .title{
-        font-weight: 600;
-        font-size: 18px;
+    .title {
+      font-weight: 600;
+      font-size: 18px;
     }
   }
-  .drawer-nav{
-    height: 60px;
+  .drawer-nav {
+    min-height: 80px;
     line-height: 60px;
     text-align: center;
+    li {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 2px;
+      margin-right: 5px;
+      position: relative;
+
+      &:nth-child(2) {
+        border: 1px solid #ccc;
+      }
+      .el-icon {
+        position: absolute;
+        left: 0px;
+        top: 2px;
+      }
+    }
   }
 }
 

@@ -29,6 +29,9 @@ import { useRouter, useRoute } from "vue-router";
 import { getCurrentInstance, onMounted } from "vue";
 import { useTabBarStore } from "@/stores/tab";
 import { findRouteForPath } from "@/utils/comm";
+import { useColorThemeStore } from "@/stores/colotTheme";
+
+const colorStore = useColorThemeStore();
 
 const store = useTabBarStore();
 // const proxy = getCurrentInstance()?.proxy;
@@ -45,11 +48,14 @@ const props = defineProps({
 onMounted(() => {
   //  初始化首页
   let name = route.name;
-  
+
   if (route.path === "/home") {
     name = "home";
   }
   select(name as string);
+  colorStore.changeDefaultTheme(
+    localStorage.getItem("defaultTheme") || "default"
+  );
 });
 // store.addTabs(proxy,)
 const select = (name: string) => {
